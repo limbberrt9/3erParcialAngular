@@ -10,6 +10,28 @@ export const navItems: INavData[] = [
       text: 'NEW'
     }
   },
+  /*-----------AGENDA INICIO--------------*/
+  {
+    title: true,
+    name: 'indice de agenda'
+  },
+  {
+    name: 'Agenda',
+    url: '/agenda',
+    iconComponent: { name: 'cil-puzzle' },
+    children: [
+      {
+        name: 'Notas',
+        url: '/agenda/notas',  
+        icon: 'nav-icon-bullet'
+      },
+      {
+        name: 'Reporte',
+        url: '/age nda/reporte',
+        icon: 'nav-icon-bullet'
+      }]
+    },  
+  /*-----------AGENDA FINAL--------------*/
   {
     title: true,
     name: 'Theme'

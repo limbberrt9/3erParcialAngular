@@ -1,0 +1,104 @@
+<p>Bienvenidos a mi componente recetas </p>
+<c-row ngPreserveWh itespaces>
+    <c-col xs="12">
+<h1>NOTAS</h1>
+<c-card class="mb-4">
+    <c-card-header>
+      <strong>Notas</strong>
+    </c-card-header>
+    <c-card-body>
+      
+        <form cForm>
+
+          <div class="mb-3">
+            <label cLabel for="numeroNota">Numero de nota</label>
+            <input cFormControl
+                   id="numeroNota"
+                   placeholder="#"
+                   [(ngModel)]="notasModelo.numeroNota"
+                   type="number"
+                   name="numeroNota"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label cLabel for="titulo">Titulo</label>
+            <input cFormControl
+                   id="tituloNota"
+                   placeholder="ingrese el titulo"
+                   [(ngModel)]="notasModelo.titulo"
+                   type="string"
+                   name="tituloNota"
+            />
+          </div>
+          <div class="mb-3">
+            <label cLabel for="autor">Autor</label>
+            <input cFormControl
+                   id="nombreAutor"
+                   placeholder="ingrese nombre del autor"
+                   [(ngModel)]="notasModelo.autor"
+                   type="string"
+                   name="nombreAutor"
+            />
+          </div>
+          
+          <div class="mb-3">
+            <label cLabel for="descripcion">Descripcion de nota</label>
+            <textarea cFormControl id="descripcionNota" rows="3" 
+            [(ngModel)]="notasModelo.descripcion" 
+            name="descripcion" ></textarea>
+            
+          </div>
+        </form>
+
+     <!--   <select  aria-label="Default select example" cSelect>-->
+          <select [(ngModel)]="notasModelo.categorias" aria-label="Default select example" name="categorias" cSelect>
+            <option>Seleccione una categoria</option>
+            <option value="664ea81cb2921f3cb01dd784">Personal</option>
+            <option value="664ea82ab2921f3cb01dd786">Trabajo</option>
+            <option value="664ea858b2921f3cb01dd788">Estudios</option>
+          </select>
+
+          
+          
+          <button (click)="guardarNotas()" cButton color="primary" variant="outline">GUARDAR</button>
+
+    </c-card-body>
+  </c-card>
+    </c-col>
+
+    
+    <c-col xs="12">
+        <table [hover]="true" cTable>
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Titulo</th>
+              <th scope="col">Autor</th>
+              <th scope="col">Descripcion</th>
+              <th scope="col">Categoria</th>
+
+              
+            </tr>
+            </thead>    
+            <tbody>
+              @for ( Notas of  listaNotas; track Notas;){
+                <tr>
+                  <th scope="row">{{Notas.numeroNota}}</th>
+                  <td>{{Notas.titulo}}</td>
+                  <td>{{Notas.autor}}</td>
+                  <td>{{Notas.descripcion}}</td>
+                  <td>{{Notas.categorias}}</td>
+                  
+                  
+                  <td>
+                    <button (click)="verNotas(Notas)"   cButton color="warning" variant="outline">Editar</button>
+                    <button (click)="eliminarNotas(Notas)" cButton color="danger" variant="outline">Eliminar</button>
+                    
+                </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+    </c-col>
+</c-row>
